@@ -5,6 +5,11 @@
 /[Bb]uilds/
 /Assets/AssetStoreTools*
 
+#有料アセット管理のため
+/Assets/[Vv]endor
+/Assets/Plugins
+
+
 # Visual Studio 2015 cache directory
 /.vs/
 
