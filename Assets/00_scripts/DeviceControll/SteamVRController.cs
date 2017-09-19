@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class SteamVRController : MonoBehaviour {
 
+    //飛ばすアンカー
     public Object Bullet;
 
     //public bool isReadyShoot = true;
     public AnchorShot anchor;
 
-
-
-
-	// Use this for initialization
 	void Start () {
 		
 	}
@@ -24,7 +21,8 @@ public class SteamVRController : MonoBehaviour {
 
         if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger))
         {
-            Debug.Log("トリガーを浅く引いた");
+            //指示ビームを出す？
+//            Debug.Log("トリガーを浅く引いた");
         }
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
         {
@@ -36,11 +34,11 @@ public class SteamVRController : MonoBehaviour {
         }
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
         {
-            Debug.Log("タッチパッドをクリックした");
+//            Debug.Log("タッチパッドをクリックした");
         }
         if (device.GetPress(SteamVR_Controller.ButtonMask.Touchpad))
         {
-            //回転
+            //Y軸を回転させる
             Vector2 v=device.GetAxis();
             if (v.x < -0.25)
             {
@@ -85,7 +83,6 @@ public class SteamVRController : MonoBehaviour {
         {
             //Debug.Log("タッチパッドに触っている");
         }
-
         
     }
 
@@ -93,23 +90,16 @@ public class SteamVRController : MonoBehaviour {
     {
         if (this.anchor) return;
         //アンカを投げる
-        GameObject a=GameObject.Instantiate(Bullet,this.transform.position,this.transform.rotation) as GameObject;
+        this.anchor=GameObject.Instantiate(Bullet,this.transform.position,this.transform.rotation) as AnchorShot;
 
-        this.anchor = a.GetComponent<AnchorShot>();
-
-        this.anchor.root = this.transform;
         this.anchor.body = this.transform.parent;
         this.anchor.anc = this.transform.parent.GetComponent<AnchorBody>();
-        
     }
-
+    
+    //アンカを回収
     public void Release()
     {
         if (!this.anchor) return;
-
-        anchor.anc.Release(anchor);
         anchor.Destroy();
-        
     }
-
 }

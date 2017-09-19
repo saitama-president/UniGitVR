@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BulletMove : MonoBehaviour {
 
+    //秒速 Nm(1=時速3.6km)
     public float Speed = 1.0f;
-
     
-
 	// Use this for initialization
 	void Start () {
         this.GetComponent<Rigidbody>().AddForce(
