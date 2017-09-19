@@ -5,9 +5,6 @@ using UnityEngine;
 public class AnchorShot : MonoBehaviour {
 
 
-    public float LastTime = 5.0f;
-
-    public Transform root;
     public Transform body;
     public AnchorBody anc;
 
@@ -16,7 +13,6 @@ public class AnchorShot : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //this.GetComponent<Joint>().
-
         StartCoroutine(waitAnchor(0.3f));
 	}
     IEnumerator waitAnchor(float waitTime)
@@ -28,7 +24,6 @@ public class AnchorShot : MonoBehaviour {
         //5秒で消滅
         yield return new WaitForSeconds(5f);
         this.Destroy();
-
         yield break;
     }
 	
@@ -43,7 +38,7 @@ public class AnchorShot : MonoBehaviour {
             {
                 //体を引っ張る
                 //this.GetComponent<Joint>().connectedAnchor *= 1 - (0.5f * Time.deltaTime);
-                this.body.position += (diff / 2) * Time.deltaTime;
+                this.body.position += diff * Time.deltaTime;
             }
         }
 
@@ -52,18 +47,24 @@ public class AnchorShot : MonoBehaviour {
     public void Destroy()
     {
         //bodyを落とす
-        this.anc.Release(this);
         GameObject.DestroyImmediate(this.gameObject);
+    }
 
+    public void OnDestroy(){
+        base.OnDestroy();
+        this.anc.Release(this);
     }
 
     //ぶつかった個所にjointを設定
     public void OnCollisionEnter(Collision collision)
     {
+        if(!isReturnAnchor)return;
+        
         this.anc.Join(this);
         Rigidbody r = this.GetComponent<Rigidbody>();
         r.isKinematic = true;
 
+        //根本も両方hingeである方がgood
         HingeJoint j=this.gameObject.AddComponent<HingeJoint>();
         j.connectedBody = body.GetComponent<Rigidbody>();
         j.autoConfigureConnectedAnchor = false;
@@ -74,6 +75,4 @@ public class AnchorShot : MonoBehaviour {
         j.spring = sp;
 
     }
-
-
 }
