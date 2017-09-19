@@ -90,7 +90,9 @@ public class SteamVRController : MonoBehaviour {
     {
         if (this.anchor) return;
         //アンカを投げる
-        this.anchor=GameObject.Instantiate(Bullet,this.transform.position,this.transform.rotation) as AnchorShot;
+        GameObject o= GameObject.Instantiate(Bullet, this.transform.position, this.transform.rotation) as GameObject;
+        this.anchor = o.GetComponent<AnchorShot>();
+            
 
         this.anchor.body = this.transform.parent;
         this.anchor.anc = this.transform.parent.GetComponent<AnchorBody>();

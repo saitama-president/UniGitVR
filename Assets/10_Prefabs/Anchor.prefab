@@ -121,7 +121,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1028013643857244}
   serializedVersion: 2
-  m_Mass: 0.2
+  m_Mass: 0.3
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -170,20 +170,20 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
-        time: 0
-        value: 0.34940147
+        time: 0.0049495697
+        value: 0.47818565
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.47108102
-        value: 1
+        time: 0.2879145
+        value: 0.90909004
         inSlope: -1.1369586
         outSlope: -1.1369586
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.98934937
-        value: 0.28915733
+        time: 1
+        value: 0.4937014
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -237,8 +237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b92f7dba1bb5542b5379b6dc88ec3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LastTime: 3
-  root: {fileID: 0}
   body: {fileID: 0}
   anc: {fileID: 0}
   isReturnAnchor: 0
@@ -253,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba9e0536cfb35a0459f713417eb2464b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 7
+  Speed: 8
 --- !u!136 &136484098333705464
 CapsuleCollider:
   m_ObjectHideFlags: 1

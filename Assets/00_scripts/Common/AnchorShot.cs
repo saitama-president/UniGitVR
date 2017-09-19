@@ -13,12 +13,12 @@ public class AnchorShot : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //this.GetComponent<Joint>().
-        StartCoroutine(waitAnchor(0.3f));
+        StartCoroutine(waitAnchor(0.01f));
 	}
     IEnumerator waitAnchor(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        GameObject.Destroy(this.GetComponent<TrailRenderer>());
+       // GameObject.Destroy(this.GetComponent<TrailRenderer>());
 
         isReturnAnchor = true;
         //5秒で消滅
@@ -47,13 +47,16 @@ public class AnchorShot : MonoBehaviour {
     public void Destroy()
     {
         //bodyを落とす
-        GameObject.DestroyImmediate(this.gameObject);
+        GameObject.Destroy(this);
+        GameObject.Destroy(this.gameObject);
     }
 
-    public void OnDestroy(){
-        base.OnDestroy();
+    public void OnDestroy()
+    {
         this.anc.Release(this);
     }
+        
+        
 
     //ぶつかった個所にjointを設定
     public void OnCollisionEnter(Collision collision)
