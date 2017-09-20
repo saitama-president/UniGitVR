@@ -31,6 +31,12 @@ public class RandomSet : MonoBehaviour {
         //終わったのでさようなら
         GameObject.Destroy(this);
 	}
+
+    //発生範囲を表示
+    public void OnDrawGizmos(){
+        Gizmos.color = new Color(1, 0, 0, 0.5F);
+        Gizmos.DrawCube(CreateBound.center, CreateBound.size);
+    }
 	
 	// Update is called once per frame
 	void Update () {
