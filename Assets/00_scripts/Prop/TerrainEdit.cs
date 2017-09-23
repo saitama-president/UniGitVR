@@ -9,11 +9,14 @@ public class TerrainEdit : MonoBehaviour
     public float size=1000;
     public float precision=0.5f;
 
+    public Bounds bound;
+
 
     void Start ()
     {
         int w=(int)(size / precision);
         int h=(int)(size / precision);
+        int res=(int)(size / precision);
         Debug.Log(w);
         float[,] heightMap = new float[
             w,
@@ -21,7 +24,7 @@ public class TerrainEdit : MonoBehaviour
             ];
         for(int x = 0 ; x < w ; x++){
             for(int y = 0 ; y < h ; y++){
-                heightMap[x,y] = Mathf.Sin(x / 6.0F) / 2 + 0.5F;
+                heightMap[x,y] = Mathf.Sin(x)*30f;
 
             }
         }
@@ -29,7 +32,7 @@ public class TerrainEdit : MonoBehaviour
         TerrainData data = new TerrainData();
         data.size = new Vector3(size,200,size);
 
-        data.heightmapResolution = 2000 ;
+        data.heightmapResolution =res;
         data.SetHeights(0, 0, heightMap);
         terrain.terrainData = data;
         
