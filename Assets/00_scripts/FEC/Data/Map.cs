@@ -1,6 +1,6 @@
 
 namespace FeC{
-    publc abstract class FECMap{
+    public abstract class FECMap{
         
 
 

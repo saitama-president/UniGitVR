@@ -1,2 +1,4 @@
-class UIMap :Monobehiviour{
+using UnityEngine;
+
+class UIMap :MonoBehaviour{
 }

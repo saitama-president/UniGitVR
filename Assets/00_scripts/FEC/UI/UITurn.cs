@@ -1,7 +1,10 @@
 
-public class UITurn:Monobehaviour{
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+public class UITurn:MonoBehaviour{
     
-    IEnumrator Start(){
+    IEnumerator Start(){
         //
 
 

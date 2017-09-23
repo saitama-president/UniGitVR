@@ -1,7 +1,7 @@
 
-abstract class Skill{
+public abstract class Skill{
 
-    public mounter parent;
+    public object parent;
 
     public string name = "";
 }

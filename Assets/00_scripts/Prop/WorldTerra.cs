@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-
+using UnityEngine;
 public class WorldTerra : MonoBehaviour
 {
     public Terrain terrain;
@@ -17,7 +17,7 @@ public class WorldTerra : MonoBehaviour
             ];
         for(int x = 0 ; x < 100 ; x++){
             for(int y = 0 ; y < 100 ; y++){
-                heightMap[x,y] = Mathf.Sin(w / 6.0F) / 2 + 0.5F;
+//                heightMap[x,y] = Mathf.Sin(w / 6.0F) / 2 + 0.5F;
             }
         }
 
