@@ -5,31 +5,40 @@ using UnityEngine;
 public class BuildingCreator : MonoBehaviour {
 
 	// Use this for initialization
-	public Bounds BuildingBounds;
 
-	public Vector3 FloorSize;
+	public Vector3 FloorSize=new Vector3(10,3,10);
 	public int Floors=5;
 
-	public float FloorHeight;
 	public Object FloorPrefab;
 	public Object WallPrefab;
+    public Object TilePrefab;
 
 	void Start () {
 		
 	}
 
+
+
+
+
     //発生範囲を表示
     public void OnDrawGizmos(){
-        Gizmos.color = new Color(1, 0, 0, 0.5F);
+
+        //全体を表示
+        Gizmos.color = new Color(1, 0, 0, 0.2F);
         Gizmos.DrawCube(
-			this.transform.position,
-			new Vector3(FloorSize.x,FloorSize.y*Floors,FloorSize.z)*1.1f
+			this.transform.position
+            + Vector3.up*FloorSize.y*Floors/2,//階数分だけ底上げ
+			new Vector3(FloorSize.x,FloorSize.y*Floors,FloorSize.z)*1.01f
 			);
-		Gizmos.color = new Color(1, 1, 0, 0.5F);
+
+        //各フロアを表示
+		Gizmos.color = new Color(1, 1, 0, 0.2F);
 		for(int i=0;i<Floors;i++){
 			Gizmos.DrawCube(this.transform.position
-			+new Vector3(0,FloorSize.y,0)*i,
-			FloorSize);
+            +Vector3.up*FloorSize.y/2
+			+ Vector3.up * FloorSize.y *i,
+			FloorSize*0.99f);
 		}
     }
 	
