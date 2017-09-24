@@ -11,6 +11,7 @@ public class TerrainEdit : MonoBehaviour
 
     public Bounds bound;
 
+    public int HeightMapResolution = 1;
 
     void Start ()
     {
@@ -29,14 +30,15 @@ public class TerrainEdit : MonoBehaviour
             }
         }
 
-        TerrainData data = new TerrainData();
-        data.size = new Vector3(size,200,size);
-
-        data.heightmapResolution =res;
-        data.SetHeights(0, 0, heightMap);
-        terrain.terrainData = data;
+        TerrainData data = terrain.terrainData;
+        //data.size = new Vector3(100, 100, 100);
+        //data.size = new Vector3(size,200,size);
         
-        terrainCollider.terrainData = data;
+        
+        //data.heightmapResolution =10;
+        data.SetHeights(0, 0, heightMap);
+       
+        
     }
 
     void Update(){

@@ -18,7 +18,7 @@ public class AnchorBody : MonoBehaviour {
         if (!shot) return;
         if (joins.Count == 0)
         {
-            this.GetComponent<Rigidbody>().isKinematic = true;
+    //        this.GetComponent<Rigidbody>().isKinematic = true;
         }
         joins.Add(shot);
     }

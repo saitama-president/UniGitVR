@@ -15,6 +15,7 @@ public class AnchorShot : MonoBehaviour {
         //this.GetComponent<Joint>().
         StartCoroutine(waitAnchor(0.01f));
 	}
+
     IEnumerator waitAnchor(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -38,7 +39,13 @@ public class AnchorShot : MonoBehaviour {
             {
                 //体を引っ張る
                 //this.GetComponent<Joint>().connectedAnchor *= 1 - (0.5f * Time.deltaTime);
-                this.body.position += diff * Time.deltaTime;
+                //this.body.position += diff * Time.deltaTime;
+                
+                this.body.GetComponent<Rigidbody>()
+                    .AddForce(diff.normalized*0.33f,ForceMode.VelocityChange);
+                    
+
+
             }
         }
 
@@ -67,7 +74,12 @@ public class AnchorShot : MonoBehaviour {
         Rigidbody r = this.GetComponent<Rigidbody>();
         r.isKinematic = true;
 
+       /* this.body.GetComponent<Rigidbody>()
+            .AddForce(this.transform.position - this.body.position,ForceMode.VelocityChange);
+            */
+
         //根本も両方hingeである方がgood
+        /*
         HingeJoint j=this.gameObject.AddComponent<HingeJoint>();
         j.connectedBody = body.GetComponent<Rigidbody>();
         j.autoConfigureConnectedAnchor = false;
@@ -76,6 +88,8 @@ public class AnchorShot : MonoBehaviour {
         sp.damper = 0.2f;
         sp.spring = 0.2f;
         j.spring = sp;
+        */
+
 
     }
 }

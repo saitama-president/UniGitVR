@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SteamVRController : MonoBehaviour {
+public class AnchorThrower: MonoBehaviour {
 
     //飛ばすアンカー
     public Object Bullet;
 
-    //public bool isReadyShoot = true;
     public AnchorShot anchor;
 
 	void Start () {
