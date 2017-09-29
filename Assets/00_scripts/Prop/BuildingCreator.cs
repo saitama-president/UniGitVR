@@ -17,11 +17,6 @@ public class BuildingCreator : MonoBehaviour {
 		
 	}
 
-
-
-
-
-    //発生範囲を表示
     public void OnDrawGizmos(){
 
         //全体を表示
@@ -46,4 +41,5 @@ public class BuildingCreator : MonoBehaviour {
 	void Update () {
 		
 	}
+
 }
