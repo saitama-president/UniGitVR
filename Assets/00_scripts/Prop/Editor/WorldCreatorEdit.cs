@@ -8,8 +8,8 @@ namespace PropCreator
 
 
 
-    [CustomEditor(typeof(PropCreator.BuildingCreator))]
-    public class BuildingCreatorEdit : Editor
+    [CustomEditor(typeof(PropCreator.WorldCreator))]
+    public class WorldCreatorEdit : Editor
     {
 
         void OnSceneGUI()
@@ -23,6 +23,7 @@ namespace PropCreator
             //Sceneビュー更新
             EditorUtility.SetDirty(target);
         }
+
 
         public override void OnInspectorGUI()
         {

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+
 namespace PropCreator
 {
-
-
-
-    [CustomEditor(typeof(PropCreator.BuildingCreator))]
-    public class BuildingCreatorEdit : Editor
+    [CustomEditor(typeof(PropCreator.FieldCreator))]
+    public class FieldCreatorEdit : Editor
     {
 
         void OnSceneGUI()
@@ -23,6 +21,7 @@ namespace PropCreator
             //Sceneビュー更新
             EditorUtility.SetDirty(target);
         }
+
 
         public override void OnInspectorGUI()
         {

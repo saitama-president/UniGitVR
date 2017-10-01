@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Address{
 
-    public static Address Get(Vector3 position){
 
-    }
 
-    public String PostCode {
+    public string PostCode {
         get{
             return "123-45";
         }
     }
 
-    public Vector3 
-
-    public override String toString(){
-
-        return "";
+    public static Address Get(Vector3 v)
+    {
+        return null;
+    }
+    public override string ToString()
+    {
+        return base.ToString();
     }
 
 }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+
+
 namespace PropCreator
 {
 
-
-
-    [CustomEditor(typeof(PropCreator.BuildingCreator))]
-    public class BuildingCreatorEdit : Editor
+    [CustomEditor(typeof(PropCreator.RoomCreator))]
+    public class RoomCreatorEdit : Editor
     {
 
         void OnSceneGUI()
@@ -49,4 +49,5 @@ namespace PropCreator
 
         }
     }
+
 }

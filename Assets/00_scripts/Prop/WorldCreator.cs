@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PropCreator
 {
-    public class BuildingCreator : MonoBehaviour
+    public class WorldCreator : MonoBehaviour
     {
 
         // Use this for initialization
@@ -52,3 +52,5 @@ namespace PropCreator
 
     }
 }
+
+
