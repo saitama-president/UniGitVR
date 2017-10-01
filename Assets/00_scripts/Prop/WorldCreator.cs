@@ -41,6 +41,7 @@ namespace PropCreator
         public void OnDrawGizmos()
         {
 
+
             //床を表示
             Gizmos.color = new Color(1, 1f, 1, 0.5F);
 
@@ -84,6 +85,14 @@ namespace PropCreator
             ,
                 new Vector3(WorldBound.x, WorldBound.y/2, WorldBound.z)
             );
+
+            //子画面
+            foreach(Transform t in this.transform)
+            {
+#if UNITY_EDITOR
+                UnityEditor.Handles.Label(t.position, t.gameObject.name);
+#endif
+            }
 
         }
 

@@ -27,13 +27,18 @@ namespace PropCreator
         }
 
 
+        private string num2A(int i)
+        {
+            return "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[i].ToString();
+        }
+
         public override void OnInspectorGUI()
         {
-            
 
+            
             WorldCreator o = (WorldCreator)(this.target);
 
-
+            UnityEditor.Handles.Label(o.transform.position, name);
 
             base.OnInspectorGUI();
             if (GUILayout.Button("Reset"))
@@ -50,13 +55,15 @@ namespace PropCreator
                         
                         Vector3 blockSize = new Vector3(
                             o.WorldBound.x/o.SplitSize.x,
-                            o.WorldBound.y,
+                            0,
                             o.WorldBound.z/o.SplitSize.y
 
                             );
                         Debug.Log(blockSize);
                         GameObject block = new GameObject();
-                        block.name = string.Format("{0}:{1}",x,y);
+                        block.name = string.Format("{0}:{1}",
+                            this.num2A(x),
+                            y);
                         Terrain t=block.AddComponent<Terrain>() as Terrain;
                         TerrainData Data = new TerrainData();
                         TerrainCollider c = new TerrainCollider();
