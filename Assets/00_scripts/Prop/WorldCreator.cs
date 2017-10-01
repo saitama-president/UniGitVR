@@ -7,15 +7,31 @@ namespace PropCreator
 {
     public class WorldCreator : MonoBehaviour
     {
-
         // Use this for initialization
+        public Vector3 WorldBound = new Vector3(100, 3, 100);
 
-        public Vector3 FloorSize = new Vector3(10, 3, 10);
-        public int Floors = 5;
+        public Vector2 SplitSize = new Vector2(5,5);
 
-        public Object FloorPrefab;
-        public Object WallPrefab;
-        public Object TilePrefab;
+        public Vector3 offset {
+            get
+            {
+                return new Vector3(WorldBound.x / 2, 0, WorldBound.z / 2);
+
+            }
+        }
+
+        public Terrain terrain{
+            get {
+                return GetComponent<Terrain>();
+            }
+        }
+
+
+        private void Awake()
+        {
+
+        }
+
 
         void Start()
         {
@@ -25,23 +41,50 @@ namespace PropCreator
         public void OnDrawGizmos()
         {
 
-            //全体を表示
-            Gizmos.color = new Color(1, 0, 0, 0.2F);
-            Gizmos.DrawCube(
-                this.transform.position
-                + Vector3.up * FloorSize.y * Floors / 2,//階数分だけ底上げ
-                new Vector3(FloorSize.x, FloorSize.y * Floors, FloorSize.z) * 1.01f
-                );
+            //床を表示
+            Gizmos.color = new Color(1, 1f, 1, 0.5F);
 
-            //各フロアを表示
-            Gizmos.color = new Color(1, 1, 0, 0.2F);
-            for (int i = 0; i < Floors; i++)
-            {
-                Gizmos.DrawCube(this.transform.position
-                + Vector3.up * FloorSize.y / 2
-                + Vector3.up * FloorSize.y * i,
-                FloorSize * 0.99f);
-            }
+            Gizmos.DrawCube(
+            this.transform.position + offset,
+                new Vector3(WorldBound.x,0.1f,WorldBound.z)
+            );
+            //全体表示
+            Gizmos.color = new Color(0.1f, 0.1f, 0.1f, 0.2F);
+
+            Gizmos.DrawCube(
+                this.transform.position+ offset,
+                WorldBound*1.01f
+            );
+
+
+            //地上部分
+            Gizmos.color = new Color(0, 0.7f, 1, 0.2F);
+            
+            Gizmos.DrawCube(
+            new Vector3(
+                this.transform.position.x,
+                this.transform.position.y+ (WorldBound.y /4),
+                this.transform.position.z
+            ) + offset
+
+            ,
+                new Vector3(WorldBound.x, WorldBound.y/2, WorldBound.z)
+            );
+
+            //地下部分
+
+            Gizmos.color = new Color(0.5f, 0.2f, 0, 0.2F);
+            
+            Gizmos.DrawCube(
+                        new Vector3(
+                this.transform.position.x,
+                this.transform.position.y - (WorldBound.y /4),
+                this.transform.position.z
+            ) + offset
+            ,
+                new Vector3(WorldBound.x, WorldBound.y/2, WorldBound.z)
+            );
+
         }
 
         // Update is called once per frame

@@ -14,6 +14,8 @@ namespace PropCreator
 
         void OnSceneGUI()
         {
+            WorldCreator o = (WorldCreator)(this.target);
+
             //SceneビューのCamera取得
             /* 
                Debug.DrawLine(
@@ -27,10 +29,61 @@ namespace PropCreator
 
         public override void OnInspectorGUI()
         {
+            
+
+            WorldCreator o = (WorldCreator)(this.target);
+
+
 
             base.OnInspectorGUI();
-            if (GUILayout.Button("Generate"))
+            if (GUILayout.Button("Reset"))
             {
+                foreach (Transform n in o.transform)
+                {
+                    GameObject.DestroyImmediate(n.gameObject);
+                }
+
+                for (int x = 0; x < o.SplitSize.x; x++)
+                {
+                    for (int y = 0; y < o.SplitSize.y; y++)
+                    {
+                        
+                        Vector3 blockSize = new Vector3(
+                            o.WorldBound.x/o.SplitSize.x,
+                            o.WorldBound.y,
+                            o.WorldBound.z/o.SplitSize.y
+
+                            );
+                        Debug.Log(blockSize);
+                        GameObject block = new GameObject();
+                        block.name = string.Format("{0}:{1}",x,y);
+                        Terrain t=block.AddComponent<Terrain>() as Terrain;
+                        TerrainData Data = new TerrainData();
+                        TerrainCollider c = new TerrainCollider();
+
+                        Data.size = blockSize;
+                        t.terrainData = Data;
+
+                        block.transform.position=
+                            o.transform.position
+                            +new Vector3(
+                                blockSize.x*x,
+                                0,
+                                blockSize.z*y)
+                                ;
+                        
+                        
+                        block.transform.SetParent(o.transform);
+                    }
+                }
+
+
+                
+                //Data.SetDetailResolution(1,1);
+
+                
+
+
 
                 Debug.Log("押した!");
             }
