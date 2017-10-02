@@ -7,35 +7,19 @@ namespace PropCreator
 {
     public class WorldCreator : MonoBehaviour
     {
-        // Use this for initialization
+        // open world all 
         public Vector3 WorldBound = new Vector3(100, 3, 100);
-
+        // terrainの分割サイズ
         public Vector2 SplitSize = new Vector2(5,5);
+
+        // フィールド（施設）の総個数
+        public int FieldNum = 10;
 
         public Vector3 offset {
             get
             {
                 return new Vector3(WorldBound.x / 2, 0, WorldBound.z / 2);
-
             }
-        }
-
-        public Terrain terrain{
-            get {
-                return GetComponent<Terrain>();
-            }
-        }
-
-
-        private void Awake()
-        {
-
-        }
-
-
-        void Start()
-        {
-
         }
 
         public void OnDrawGizmos()
@@ -93,13 +77,6 @@ namespace PropCreator
                 Util.Gizmo.DrawLabel(t.position, t.gameObject.name);
             }
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
     }
 }
 

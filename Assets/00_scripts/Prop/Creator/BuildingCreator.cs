@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
 
+FieldCreator→BuildingCreator→FloorCreator
+の順
+
+*/
 namespace PropCreator
 {
     public class BuildingCreator : MonoBehaviour
@@ -11,11 +16,22 @@ namespace PropCreator
         // Use this for initialization
 
         public Vector3 FloorSize = new Vector3(10, 3, 10);
-        public int Floors = 5;
+
+
+        //壁
+        public float MarginTop = 0.2f;
+        public float MarginBottom = 0.3f;
+        public float MarginWall = 0.2f;
+
+
+        //各必要なオブジェクトの数
+        public int Stairs = 2;//階段の数
+        public int Floors = 5;//階の数
 
         public Object FloorPrefab;
         public Object WallPrefab;
         public Object TilePrefab;
+
 
         void Start()
         {
