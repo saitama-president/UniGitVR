@@ -1,4 +1,4 @@
-Shader "Unlit/SimplestFlagmentShader" {
+Shader "SAITAMA-TEC/SampleShader" {
 
     Properties {
         _MainColor("Main Color", Color) = (1, 1, 1, 1)
