@@ -89,11 +89,9 @@ namespace PropCreator
             //子画面
             foreach(Transform t in this.transform)
             {
-#if UNITY_EDITOR
-                UnityEditor.Handles.Label(t.position, t.gameObject.name);
-#endif
+                
+                Util.Gizmo.DrawLabel(t.position, t.gameObject.name);
             }
-
         }
 
         // Update is called once per frame
